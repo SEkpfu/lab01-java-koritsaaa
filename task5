@@ -1,0 +1,108 @@
+import java.util.Scanner;
+public class Salary {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите имя");
+        String name1 = sc.nextLine();
+        System.out.println("Working hours = ");
+        double hours1 = sc.nextDouble();
+        System.out.println("Hourly rate =");
+        double rate1 = sc.nextDouble();
+        System.out.println("Prize =");
+        double prize1 = sc.nextDouble();
+
+        double salary = grossSalary(hours1,rate1,prize1);
+        double salarywithtax = Tax(salary);
+        double fsalary = NetSalary(salary);
+
+
+        Scanner sc2 = new Scanner(System.in);
+        System.out.println("Введите имя");
+        String name2 = sc2.nextLine();
+        System.out.println("Working hours = ");
+        double hours2 = sc2.nextDouble();
+        System.out.println("Hourly rate =");
+        double rate2 = sc2.nextDouble();
+        System.out.println("Prize =");
+        double prize2 = sc2.nextDouble();
+
+        double salary2 = grossSalary(hours2,rate2,prize2);
+        double salarywithtax2 = Tax(salary2);
+        double fsalary2 = NetSalary(salary2);
+
+        Scanner sc3 = new Scanner(System.in);
+        System.out.println("Введите имя");
+        String name3 = sc3.nextLine();
+        System.out.println("Working hours = ");
+        double hours3 = sc3.nextDouble();
+        System.out.println("Hourly rate =");
+        double rate3 = sc3.nextDouble();
+        System.out.println("Prize =");
+        double prize3 = sc3.nextDouble();
+
+        double salary3 = grossSalary(hours3,rate3,prize3);
+        double salarywithtax3 = Tax(salary3);
+        double fsalary3 = NetSalary(salary3);
+
+        System.out.println(" ");
+        System.out.println("Name: " + name1);
+        System.out.println("Заработано: "+ salary);
+        System.out.println("Сумма налога: " + salarywithtax);
+        System.out.println("Сумма после уплаты налога: " + fsalary);
+        System.out.println(" ");
+        System.out.println("Name: " + name2);
+        System.out.println("Заработано: "+ salary2);
+        System.out.println("Сумма налога: " + salarywithtax2);
+        System.out.println("Сумма после уплаты налога: " + fsalary2);
+        System.out.println(" ");
+        System.out.println("Name: " + name3);
+        System.out.println("Заработано: "+ salary3);
+        System.out.println("Сумма налога: " + salarywithtax3);
+        System.out.println("Сумма после уплаты налога: " + fsalary3);
+        System.out.println(" ");
+        double tsalary = fsalary+fsalary2+fsalary3;
+        System.out.println("Всего заработали: "+tsalary);
+        double ms = MaxSalary(fsalary,fsalary2,fsalary3); // здесь не придумал как к именам подвязать максимум
+        System.out.println("Максимальная: "+ms);
+    }
+    public static double grossSalary(double hours, double rate, double prize) {
+        double glsalarwp = (hours*rate);
+        return glsalarwp + glsalarwp*(prize/100);
+
+    }
+    public static double Tax(double salary) {
+        if(salary < 200000){
+            return salary*0.13;
+        }
+        else{
+            return salary*0.15;
+        }
+    }
+    public static double NetSalary(double salary){
+        if(salary < 200000){
+            return salary - salary*0.13;
+        }
+        else{
+            return salary - salary*0.15;
+        }
+
+    }
+    public static double MaxSalary(double fsalary, double fsalary2, double fsalary3){
+        if((fsalary>fsalary2) && (fsalary>fsalary3)){
+            return fsalary;
+
+        }
+        if((fsalary2>fsalary) && (fsalary2>fsalary3)){
+            return fsalary2;
+
+        }
+        if((fsalary3>fsalary)&&(fsalary3>fsalary2)){
+            return fsalary3;
+        }
+        else {
+            return fsalary;
+        }
+    }
+
+
+}
