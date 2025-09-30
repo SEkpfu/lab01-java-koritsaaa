@@ -1,0 +1,33 @@
+import java.util.Scanner;
+public class Salary {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double tsalary = 0;
+        double salarym = 0;
+        for (int i = 0; i < 3; i++) {
+
+            System.out.println("Введите имя");
+            String name = sc.nextLine();
+            System.out.println("Working hours = ");
+            double hours = sc.nextDouble();
+            System.out.println("Hourly rate =");
+            double rate = sc.nextDouble();
+            System.out.println("Prize =");
+            double prize = sc.nextDouble();
+            sc.nextLine();
+
+            double salary = grossSalary(hours,rate,prize);
+            System.out.println("До налога: " + salary);
+            double salarywithtax = Tax(salary);
+            System.out.println("Налог: " + salarywithtax);
+            double fsalary = NetSalary(salary);
+            System.out.println("После вычета налога: "+fsalary);
+            tsalary = tsalary + fsalary;
+            if(fsalary>salarym){
+                salarym = fsalary;
+
+            }
+
+        }
+        System.out.println(tsalary);
+        System.out.println(salarym);
