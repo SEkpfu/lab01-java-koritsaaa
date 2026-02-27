@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class Points {
+    private String label;
+    private double x;
+    private double y;
+
+    public Points() {
+        this.label = "NaN";
+        this.x = 0.0;
+        this.y = 0.0;
+    }
+    public Points(String label, double x, double y){
+        this.label = label;
+        this.x = x;
+        this.y = y;
+    }
+    public String getLabel(){
+        return label;
+    }
+    public double getX(){
+        return x;
+    }
+    public double getY(){
+        return y;
+    }
+    public void setLabel(String label){
+        if(label.length() > 30) {
+            throw new RuntimeException("negative");
+        }
+        else{
+            this.label = label;
+        }
+    }
+    public void setX(double x){
+        this.x = x;
+    }
+    public void setY(double y){
+        this.y = y;
+    }
+    public double distanceToO(){
+        return Math.sqrt(x*x+y*y);
+    }
+    public double distanceCount(Points p2){
+        return Math.sqrt(Math.pow((this.x - p2.x),2) + Math.pow((this.y - p2.y),2));
+    }
+    public static double distanceBetween(Points pp1, Points pp2){
+        return pp1.distanceCount(pp2);
+    }
+    public void Insert(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Название точки:");
+        setLabel(sc.nextLine());
+        System.out.println("Координата x:");
+        this.x = sc.nextDouble();
+        System.out.println("Координата у:");
+        this.y = sc.nextDouble();
+    }
+    @Override
+    public String toString(){
+        return "Точка "+ label + " х: " + x + " у: " + y;
+    }
+}
